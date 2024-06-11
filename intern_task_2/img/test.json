@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Daniil",
+        "surname": "NoBerk",
+        "salary": "1488",
+        "hiringDate": "2024-04-26",
+        "job": "SALES",
+        "company": {
+            "name": "Loh_Gmbh",
+            "country": "Ukraine",
+            "foundationDate": "2024-04-25"
+        }
+    },
+   {
+        "name": "Daniil",
+        "surname": "NoBerk",
+        "salary": "1488",
+        "hiringDate": "2024-04-26",
+        "job": "SALES"
+    }
+]

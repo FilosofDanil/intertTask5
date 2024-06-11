@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: kafka-sample
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: kafka-sample
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.example.demo.*
+        key:
+          deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value:
+          deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+    producer:
+      client-id: kafka-sample
+      key-serializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        key:
+          serializer: org.apache.kafka.common.serialization.StringSerializer
+        value:
+          serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.yaml
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+  springfox:
+    documentation:
+      swagger-ui:
+        enabled: true
+kafka:
+  topic:
+    emailReceived: emailReceived
+server:
+  port: 8080
