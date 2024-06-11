@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/intern_task_2/demo2.iml" filepath="$PROJECT_DIR$/intern_task_2/demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/intertTask5.iml" filepath="$PROJECT_DIR$/.idea/intertTask5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification_service/notification_service.iml" filepath="$PROJECT_DIR$/notification_service/notification_service.iml" />
+    </modules>
+  </component>
+</project>

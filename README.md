@@ -24,11 +24,13 @@
 3. Build project using Maven(Skip tests to build faster if needed):
 
     ```bash
+    cd notification_service
     mvn clean package -DskipTests
     ```
 
 4. Launch Docker Compose:
 
     ```bash
+    cd ..
     docker-compose up --build
     ```
