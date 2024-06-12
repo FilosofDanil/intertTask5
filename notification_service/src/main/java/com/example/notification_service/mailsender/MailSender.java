@@ -1,5 +1,6 @@
 package com.example.notification_service.mailsender;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,12 +11,12 @@ import org.springframework.stereotype.Component;
 public class MailSender {
     @Autowired
     private JavaMailSender javaMailSender;
-    @Value("${spring.mail.username}")
-    private String username;
+
     public void send(String emailTo, String subject, String message) {
+        Dotenv dotenv = Dotenv.load();
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
-        mailMessage.setFrom(username);
+        mailMessage.setFrom(dotenv.get("SPRING_MAIL_USERNAME"));
         mailMessage.setTo(emailTo);
         mailMessage.setSubject(subject);
         mailMessage.setText(message);

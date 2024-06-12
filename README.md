@@ -31,6 +31,5 @@
 4. Launch Docker Compose:
 
     ```bash
-    cd ..
     docker-compose up --build
     ```

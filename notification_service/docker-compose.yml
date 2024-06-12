@@ -1,18 +1,35 @@
-version: "3"
+version: "3.7"
 services:
-  notification_service:
-    image: notification_service:latest
+  app:
+
+    healthcheck:
+      test: curl -s http://elasticsearch01:9200 >/dev/null || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 50
+    networks:
+      - go_netw
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
-    env_file:
-      - .env
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_MAIL_HOST: ${SPRING_MAIL_HOST}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD}
+      SPRING_MAIL_PORT: ${SPRING_MAIL_PORT}
+      SPRING_MAIL_PROTOCOL: ${SPRING_MAIL_PROTOCOL}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: ${SPRING_MAIL_SMTP_AUTH}
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: ${SPRING_MAIL_SMTP_STARTTLS_ENABLE}
+      MAIL_DEBUG: ${MAIL_DEBUG}
     depends_on:
-      - kafka
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
   elasticsearch:
+    networks:
+      - go_netw
     image: docker.elastic.co/elasticsearch/elasticsearch:8.13.3
     container_name: elasticsearch
     environment:
@@ -37,6 +54,8 @@ services:
     ports:
       - "5601:5601"
   zookeeper:
+    networks:
+      - go_netw
     image: 'bitnami/zookeeper:latest'
     container_name: zookeeper
     ports:
@@ -44,6 +63,8 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
+    networks:
+      - go_netw
     image: 'bitnami/kafka:latest'
     container_name: kafka
     ports:
@@ -51,7 +72,7 @@ services:
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092,PLAINTEXT://kafka:9092
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
@@ -62,3 +83,7 @@ services:
     container_name: 'mongo-db-kafka-sample'
     ports:
       - "27017:27017"
+
+networks:
+  go_netw:
+    driver: bridge
