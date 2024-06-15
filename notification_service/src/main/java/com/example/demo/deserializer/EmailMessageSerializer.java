@@ -1,7 +1,7 @@
-package com.example.notification_service.deserializer;
+package com.example.demo.deserializer;
 
 
-import com.example.notification_service.message.EmailMessage;
+import com.example.demo.message.EmailMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Deserializer;
 

@@ -1,6 +1,6 @@
-package com.example.notification_service.repository;
+package com.example.demo.repository;
 
-import com.example.notification_service.message.EmailMessage;
+import com.example.demo.message.EmailMessage;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

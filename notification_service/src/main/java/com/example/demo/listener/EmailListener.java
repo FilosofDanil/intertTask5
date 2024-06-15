@@ -1,8 +1,7 @@
-package com.example.notification_service.listener;
+package com.example.demo.listener;
 
-import com.example.notification_service.message.EmailMessage;
-import com.example.notification_service.service.MailService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.demo.message.EmailMessage;
+import com.example.demo.service.MailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -14,14 +13,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EmailListener {
-    ObjectMapper objectMapper;
 
     MailService mailService;
 
     @SneakyThrows
     @KafkaListener(topics = "${kafka.topic.emailReceived}")
-    public void emailReceived(String message) {
-        EmailMessage emailMessage = objectMapper.readValue(message, EmailMessage.class);
-        mailService.processEmailReceived(emailMessage);
+    public void emailReceived(EmailMessage message) {
+        mailService.processEmailReceived(message);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.notification_service.message;
+package com.example.demo.message;
 
 import lombok.AccessLevel;
 import lombok.Builder;

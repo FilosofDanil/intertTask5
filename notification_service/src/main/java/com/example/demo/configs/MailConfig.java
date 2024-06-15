@@ -1,4 +1,4 @@
-package com.example.notification_service.configs;
+package com.example.demo.configs;
 
 
 import io.github.cdimascio.dotenv.Dotenv;
@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import java.util.Date;
 import java.util.Objects;
 import java.util.Properties;
 

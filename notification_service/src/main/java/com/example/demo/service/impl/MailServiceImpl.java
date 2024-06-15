@@ -1,10 +1,10 @@
-package com.example.notification_service.service.impl;
+package com.example.demo.service.impl;
 
 
-import com.example.notification_service.mailsender.MailSender;
-import com.example.notification_service.message.EmailMessage;
-import com.example.notification_service.repository.EmailMessageRepository;
-import com.example.notification_service.service.MailService;
+import com.example.demo.mailsender.MailSender;
+import com.example.demo.message.EmailMessage;
+import com.example.demo.repository.EmailMessageRepository;
+import com.example.demo.service.MailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

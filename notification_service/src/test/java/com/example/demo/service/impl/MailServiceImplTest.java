@@ -1,7 +1,7 @@
-package com.example.notification_service.service.impl;
-import com.example.notification_service.message.EmailMessage;
-import com.example.notification_service.repository.EmailMessageRepository;
-import com.example.notification_service.service.MailService;
+package com.example.demo.service.impl;
+import com.example.demo.message.EmailMessage;
+import com.example.demo.repository.EmailMessageRepository;
+import com.example.demo.service.MailService;
 import jakarta.mail.internet.MimeMessage;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -11,7 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
