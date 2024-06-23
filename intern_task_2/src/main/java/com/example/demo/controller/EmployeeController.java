@@ -33,7 +33,7 @@ import java.util.List;
  * Controller class for handling Employee related HTTP requests.
  */
 @RestController
-@RequestMapping("api/employee")
+@RequestMapping("api/v1/employee")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EmployeeController {

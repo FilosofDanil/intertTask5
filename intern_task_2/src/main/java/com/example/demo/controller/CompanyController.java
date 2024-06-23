@@ -21,7 +21,7 @@ import java.util.List;
  * Controller class for handling Company related requests.
  */
 @RestController
-@RequestMapping("api/company")
+@RequestMapping("api/v1/company")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CompanyController {
