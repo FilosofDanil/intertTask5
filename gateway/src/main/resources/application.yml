@@ -6,8 +6,8 @@ server:
 
 oauth:
   google:
-    clientId: "557931936658-7ih5tuu8gepkncbuj7r8dabts6le2609.apps.googleusercontent.com"
-    clientSecret: "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"
+    clientId: ""
+    clientSecret: ""
     scope: "openid profile email"
 
 spring:
